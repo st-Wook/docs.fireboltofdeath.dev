@@ -30,17 +30,21 @@ module.exports = {
 		},
 		{
 			type: 'category',
-			label: 'Additional Modules',
+			label: 'Modules',
 			collapsed: false,
 			items: [
 				{
 					type: 'category',
 					label: 'Networking',
 					items: [
-						'flamework/additional-modules/networking/creating-events',
-						'flamework/additional-modules/networking/client-events',
-						'flamework/additional-modules/networking/server-events',
-						'flamework/additional-modules/networking/middleware'
+						// 'flamework/additional-modules/networking/creating-events',
+						// 'flamework/additional-modules/networking/client-events',
+						// 'flamework/additional-modules/networking/server-events',
+						// 'flamework/additional-modules/networking/middleware'
+						'flamework/additional-modules/networking/introduction',
+						'flamework/additional-modules/networking/remote-events',
+						'flamework/additional-modules/networking/remote-functions',
+						'flamework/additional-modules/networking/middleware',
 					],
 				},
 				{
