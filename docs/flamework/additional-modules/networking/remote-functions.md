@@ -53,13 +53,13 @@ You can only connect one handler to each function. Calling `setCallback` more th
 
 ```ts
 // With a normal function
-Functions.function.setCallback((param1) => {
+Functions.function.setCallback((player?, param1) => {
 	print("This is", param1);
 	return math.random(1, 100);
 })
 
 // With an async function
-Functions.function.setCallback(async (param1) => {
+Functions.function.setCallback(async (player?, param1) => {
 	print("This is", param1);
 	return await myAsyncNumberGenerator(1, 100);
 })
