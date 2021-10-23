@@ -32,3 +32,10 @@ See for yourself, here's a bare minimum example of a service, which can be fetch
 @Service()
 export class MyService {}
 ```
+
+### Known Issues
+This list is updated manually, and is not always up to date. If you want the latest list and more information about these issues, please visit the [GitHub issues](https://github.com/rbxts-flamework/core/issues?q=is%3Aissue+is%3Aopen+label%3Abug) page.
+
+- Type guard generation fails on unions that include Enum objects
+- Type guard generation for networking treats overloads as unions
+- Type guard generation for networking does not support rest parameters
