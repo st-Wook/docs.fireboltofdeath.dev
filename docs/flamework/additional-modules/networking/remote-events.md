@@ -50,6 +50,9 @@ Events.event.except([player1, player2], ...args);
 // Broadcast
 Events.event.broadcast(...args);
 
+// Predict, fires server event using player as the sender
+Events.event.predict(player, ...args);
+
 // Shorthand syntax, equivalent to Events.event.fire
 Events.event(player, ...args);
 ```
