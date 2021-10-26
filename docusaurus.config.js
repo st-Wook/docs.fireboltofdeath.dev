@@ -13,6 +13,9 @@ module.exports = {
 		colorMode: {
 			defaultMode: 'dark',
 		},
+		prism: {
+			theme: require('prism-react-renderer/themes/vsDark'),
+		},
 		navbar: {
 			title: 'fireboltofdeath.dev',
 			items: [

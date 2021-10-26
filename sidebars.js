@@ -23,9 +23,10 @@ module.exports = {
 			label: 'Guides',
 			items: [
 				'flamework/guides/creating-a-singleton',
-				'flamework/guides/lifecycle-events',
 				'flamework/guides/dependencies',
-				'flamework/guides/ignition'
+				'flamework/guides/lifecycle-events',
+				'flamework/guides/utility-macros',
+				'flamework/guides/ignition',
 			]
 		},
 		{
