@@ -15,7 +15,7 @@ Flamework has two lifecycle events called during ignition: `OnInit` and `OnStart
 `OnStart` is intended for everything else.
 
 ## Flamework cannot be built in a dirty environment.
-This error occurs whenever you attempt to compile Flamework with incremental mode enabled. You should delete your `out` directory which will cause TypeScript to completely recompile your project.
+This error occurs whenever you attempt to compile Flamework with incremental mode enabled in a project that was not previously using Flamework. You should delete your `out` directory which will cause TypeScript to completely recompile your project.
 
 ## Element implicitly has an 'any' type because expression of type '"<RANDOM\>"' can't be used to index type 'ServerHandler/ClientHandler'.
 This error occurs due to a roblox-ts bug with incremental mode. You should disable Flamework's obfuscation when using watch mode and only enable it for full builds.

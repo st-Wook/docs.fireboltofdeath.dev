@@ -18,7 +18,7 @@ module.exports = {
 		"flamework/introduction",
 		"flamework/installation",
 		// "flamework/migration",
-		'flamework/guides/frequently-asked',
+		'flamework/frequently-asked',
 		{
 			type: 'category',
 			label: 'Guides',
