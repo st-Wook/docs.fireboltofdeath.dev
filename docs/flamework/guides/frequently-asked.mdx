@@ -1,0 +1,21 @@
+---
+title: Frequently Asked
+---
+This is a compilation of frequently asked questions. If you have any question not listed here and you think it should be listed here, feel free to make a PR or ask in the roblox-ts discord.
+
+## When do I use [`OnInit`](./lifecycle-events#oninit) over [`OnStart`](./lifecycle-events#onstart)?
+Flamework has two lifecycle events called during ignition: `OnInit` and `OnStart`. These events are similar but they serve two very distinct purposes.
+
+`OnInit` is called sequentially for every singleton in the order you define through `loadOrder`. If any singleton fails to `OnInit` then Flamework will abort ignition instead of trying to recover. It is not safe to use other dependencies in this event as they may not yet be initialized. Yielding in `OnInit` will also delay ignition.
+
+`OnStart` is called on a new thread for every singleton and, like `OnInit`, it runs in the order defined by `loadOrder`. However, yielding will not delay ignition and errors will not cause ignition to be aborted.
+
+`OnInit` is intended exclusively for code that needs to delay, or abort, ignition or run before other dependencies attempt to use your singleton and should be used as sparingly as possible.
+
+`OnStart` is intended for everything else.
+
+## Flamework cannot be built in a dirty environment.
+This error occurs whenever you attempt to compile Flamework with incremental mode enabled. You should delete your `out` directory which will cause TypeScript to completely recompile your project.
+
+## Element implicitly has an 'any' type because expression of type '"<RANDOM\>"' can't be used to index type 'ServerHandler/ClientHandler'.
+This error occurs due to a roblox-ts bug with incremental mode. You should disable Flamework's obfuscation when using watch mode and only enable it for full builds.

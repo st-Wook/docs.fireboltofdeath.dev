@@ -1,23 +1,24 @@
 module.exports = {
-  packages: [
-	{
-		type: 'category',
-		label: 'Packages',
-		items: [
-			{
-				type: 'category',
-				label: '@rbxts/priority-map',
-				items: [
-					"packages/priority-map/installation",
-				]
-			},
-		]
-	}
-  ],
-  flamework: [
+	packages: [
+		{
+			type: 'category',
+			label: 'Packages',
+			items: [
+				{
+					type: 'category',
+					label: '@rbxts/priority-map',
+					items: [
+						"packages/priority-map/installation",
+					]
+				},
+			]
+		}
+	],
+	flamework: [
 		"flamework/introduction",
 		"flamework/installation",
 		"flamework/migration",
+		'flamework/guides/frequently-asked',
 		{
 			type: 'category',
 			label: 'Guides',
@@ -67,5 +68,5 @@ module.exports = {
 				'flamework/modding/introduction'
 			]
 		}
-  ]
+	]
 };
