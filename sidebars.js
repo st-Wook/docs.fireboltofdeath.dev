@@ -65,7 +65,21 @@ module.exports = {
 			type: 'category',
 			label: 'Modding',
 			items: [
-				'flamework/modding/introduction'
+				'flamework/modding/introduction',
+				'flamework/modding/metadata',
+				'flamework/modding/reflection',
+				{
+					type: 'category',
+					label: 'Guides',
+					collapsed: false,
+					items: [
+						'flamework/modding/guides/listeners',
+						'flamework/modding/guides/lifecycle-events',
+						'flamework/modding/guides/decorators',
+						'flamework/modding/guides/singletons',
+						'flamework/modding/guides/dependency-resolution',
+					]
+				},
 			]
 		}
 	]
