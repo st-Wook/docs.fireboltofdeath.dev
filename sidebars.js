@@ -78,6 +78,7 @@ module.exports = {
 						'flamework/modding/guides/decorators',
 						'flamework/modding/guides/singletons',
 						'flamework/modding/guides/dependency-resolution',
+						'flamework/modding/guides/user-macros',
 					]
 				},
 			]
