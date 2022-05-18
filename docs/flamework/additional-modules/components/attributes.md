@@ -4,7 +4,7 @@ title: Attributes
 Components support attributes out of the box! It'll even generate type guards for each attribute, automatically.
 
 ## Adding attributes to a component
-Adding components to an attribute is very straightforward. Define an interface, pass it into BaseComponent, and voila!
+Adding attributes to a component is very straightforward. Define an interface, pass it into BaseComponent, and voila!
 ```ts
 interface Attributes {
 	prop1: string,
