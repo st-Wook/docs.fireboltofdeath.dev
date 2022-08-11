@@ -54,6 +54,7 @@ function randomChanceMiddleware<I extends Array<unknown>, O>(chances: number): N
 			if (math.random() < chances / 100) {
 				return processNext(player, ...args);
 			}
+			return Networking.Skip;
 		};
 	};
 }
