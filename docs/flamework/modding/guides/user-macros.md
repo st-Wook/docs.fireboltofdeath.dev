@@ -31,6 +31,76 @@ function newMacro<T>(param: string, abc?: Modding.Generic<T, "id" | "text">) {
 }
 ```
 
+## Advanced User Macros
+
+Flamework supports a more advanced form of user macros allowing you to perform arbitrary conditions, mapped types and similar at compile time.
+This is achieved using the `Modding.Many` user macro API.
+
+I've provided a list of syntax that you can use, but it is not exhaustive and Flamework can generate most types without any issues.
+
+#### Exposing your macro metadata
+
+In libraries, it is recommended that you specify macro metadata in an interface and expose it publicly.
+This allows users to easily nest your macro inside of their own.
+This can be an interface or a type alias, but remember to only use `Modding.Many` under the actual macro.
+
+```ts
+export interface DoSomethingMacro<T> {}
+
+declare function doSomething<T>(metadata?: Modding.Many<DoSomethingMacro<T>>);
+```
+
+### Objects / Tuples
+
+You can provide an object or a tuple to `Modding.Many` and Flamework will generate an identical value when the function is called, for example:
+
+```ts
+declare function macro<T>(metadata?: Modding.Many<{ a: Modding.Generic<T, "id">, b: Modding.Caller<"uuid"> }>);
+declare function macro<T>(metadata?: Modding.Many<[Modding.Generic<T, "id">, Modding.Caller<"uuid">]>);
+```
+
+### Arrays
+
+Besides tuples, Flamework also supports generating arrays using de-unification.
+This means that you are able to turn a union (e.g `keyof T`) into an array of all constituents.
+
+```ts
+declare function macro<T>(keysOfT?: Modding.Many<(keyof T)[]>);
+```
+
+### Mapped types
+
+You are able to use mapped types to generate derivatives of an object which can be used to fetch additional information about members of a type.
+
+```ts
+declare function macro<T>(guardsForEachMember?: Modding.Many<{ [k in keyof T]: Modding.Generic<T[k], "guard"> }>);
+```
+
+### Literals / Conditionals
+
+You can use conditional types to simulate if statements at compile-time.
+Flamework supports generating most literal values such as numbers, strings, booleans and undefined.
+
+```ts
+declare function macro<T>(isString?: Modding.Many<T extends string ? true : false>);
+```
+
+## Utility types
+
+Flamework provides some additional utility types besides `Modding.Generic` and `Modding.Caller` which you can find here.
+
+### Modding.Hash
+
+`Modding.Hash` allows you to generate a UUID based off a string (and an optional context.)
+
+### Modding.Obfuscate
+
+This behaves identically to `Modding.Hash` except it is only enabled when Flamework obfuscation is enabled.
+
+### Modding.TupleLabels
+
+This retrieves the labels of a tuple and can be used in conjunction with `Parameters<T>` to retrieve parameter names from a function type.
+
 ## Generic Metadata
 You can access generic metadata by using `Modding.Generic<T, M>`. `T` does not have to be a type parameter and could contain any type, e.g `keyof T` or `{ [k in keyof T]: string }`.
 
