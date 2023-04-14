@@ -20,7 +20,7 @@ Similarily, if you'd like to add a component to a specific instance, you can use
 
 If you'd like to remove a component, you can use `Components.removeComponent<T>(instance)`
 
-Disclaimer: Components added via the scripting API do not get removed automatically. It is recommended that you use the `tag` config option which will automatically create and cleanup components, and also supports FilteringEnabled on the client.
+Disclaimer: Components added via the scripting API do not get removed automatically. It is recommended that you use the `tag` config option which will automatically create and cleanup components, and also supports StreamingEnabled on the client.
 ```ts
 import { Components } from "@flamework/components";
 
