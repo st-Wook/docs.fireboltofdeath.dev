@@ -23,6 +23,7 @@ module.exports = {
 			type: 'category',
 			label: 'Guides',
 			items: [
+				'flamework/guides/configuration',
 				'flamework/guides/creating-a-singleton',
 				'flamework/guides/dependencies',
 				'flamework/guides/lifecycle-events',
