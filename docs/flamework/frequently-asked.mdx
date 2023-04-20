@@ -10,7 +10,7 @@ Flamework has two lifecycle events called during ignition: `OnInit` and `OnStart
 
 `OnStart` is called on a new thread for every singleton and, like `OnInit`, it runs in the order defined by `loadOrder`. However, yielding will not delay ignition and errors will not cause ignition to be aborted.
 
-`OnInit` is intended exclusively for code that needs to delay, or abort, ignition or run before other dependencies attempt to use your singleton and should be used as sparingly as possible.
+`OnInit` is intended exclusively for code that needs to delay, or abort, ignition and should be used as sparingly as possible.
 
 `OnStart` is intended for everything else.
 
