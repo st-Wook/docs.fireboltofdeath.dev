@@ -16,6 +16,8 @@ You should use the same version for every Flamework package.
 [@flamework/networking](https://github.com/rbxts-flamework/networking/commits/master)
 [rbxts-transformer-flamework](https://github.com/rbxts-flamework/transformer/commits/master)
 
+<span style={{color: "crimson"}}>This release contains breaking changes.</span>
+
 ### Transformer
 - TypeScript is now a peer dependency.
 - Flamework will user the correct parameter length for user macros where it previously didn't (such as tuple rest parameters.)
@@ -34,7 +36,7 @@ You should use the same version for every Flamework package.
 	- You can define `warningTimeout` in your component settings to override the time, set to 0 to disable.
 - Added the ability to whitelist/blacklist specific ancestors.
 	- These can be specified using `ancestorWhitelist` and `ancestorBlacklist` in your component settings.
-	- Defaults to `ancestorBlacklist: [ServerStorage, ReplicatedStorage]`
+	- <span style={{color: "crimson"}}>[BREAKING]</span> Defaults to `ancestorBlacklist: [ServerStorage, ReplicatedStorage]`
 
 ### Networking
 - Fixed an error whenever `NaN` was sent as an ID.
