@@ -37,6 +37,7 @@ You should use the same version for every Flamework package.
 - Added the ability to whitelist/blacklist specific ancestors.
 	- These can be specified using `ancestorWhitelist` and `ancestorBlacklist` in your component settings.
 	- <span style={{color: "crimson"}}>[BREAKING]</span> Defaults to `ancestorBlacklist: [ServerStorage, ReplicatedStorage]`
+	- <span style={{color: "crimson"}}>[BREAKING]</span> This does not update when components are reparented.
 
 ### Networking
 - Fixed an error whenever `NaN` was sent as an ID.
