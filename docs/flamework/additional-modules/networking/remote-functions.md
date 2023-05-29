@@ -76,3 +76,20 @@ Flamework's networking exposes a `NetworkingFunctionError` enum which is used wh
 | BadRequest    | The request was rejected by the receiver due to invalid arguments.             |
 | InvalidResult | The request was processed by the receiver, but an invalid result was returned. |
 | Unprocessed   | The request was not processed by the receiver.                                 |
+
+### Handling errors
+
+Flamework's RemoteFunctions return promises which allows you to handle them the same as any other promise.
+Flamework always passes a `NetworkingFunctionError` as the rejection value, which tells you the reason the request failed.
+
+```ts
+Events.function.invoke()
+	.then((value) => print("I successfully got", value))
+	.catch((reason) => {
+		if (reason === NetworkingFunctionError.Timeout) {
+			warn("My request timed out!");
+		} else {
+			warn("A different error occured:", reason);
+		}
+	})
+```
