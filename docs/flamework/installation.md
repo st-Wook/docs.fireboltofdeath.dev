@@ -130,7 +130,7 @@ When it comes time to update the version of Flamework you are using, simply foll
 
 #### Update the packages
 ```
-npm i @rbxts/flamework@latest
+npm i @flamework/core@latest
 npm i -D rbxts-transformer-flamework@latest
 ```
 
