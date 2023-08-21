@@ -17,16 +17,24 @@ jobs:
     - uses: pnpm/action-setup@v2
       with:
         version: 8.2.0
+        run_install: false
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         path: 'docs-build/docs'
 
-    - name: Cache .pnpm-store
-      uses: actions/cache@v2
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - uses: actions/cache@v3
+      name: Setup pnpm cache
       with:
-        path: ~/.pnpm-store
-        key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
 
     - name: Install documentation
       run: |
@@ -39,23 +47,22 @@ jobs:
         npm run build
 
     - name: Clear public_html
-      uses: appleboy/ssh-action@v0.1.10
+      uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
+        username: ${{ secrets.USERNAME }}
+        port: ${{ secrets.PORT }}
+        key: ${{ secrets.SSHKEY }}
         script: |
           rm -rf ~/public_html
 
     - name: Deploy doc build onto website
       uses: appleboy/scp-action@v0.1.4
-      env:
-        HOST: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
       with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        port: ${{ secrets.PORT }}
+        key: ${{ secrets.SSHKEY }}
         source: "./docs-build/docs/build"
         target: "~/public_html"
         strip_components: 4
